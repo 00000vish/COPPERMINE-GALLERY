@@ -1,0 +1,22 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EmmaWatsonGallery.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FolderSetting" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MaxPic" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">47276</Value>
+    </Setting>
+    <Setting Name="IndexPic" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="dataBase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://iheartwatson.net/gallery</Value>
+    </Setting>
+    <Setting Name="dataBaseCollection" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://iheartwatson.net/gallery
+http://emma-w.net/photos</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
