@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EmmaWatsonGallery
+namespace CoppermineGallery
 {
     public partial class Form3 : Form
     {

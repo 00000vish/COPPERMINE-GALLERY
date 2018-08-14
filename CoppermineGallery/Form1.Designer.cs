@@ -1,4 +1,4 @@
-﻿namespace EmmaWatsonGallery
+﻿namespace CoppermineGallery
 {
     partial class Form1
     {
@@ -70,7 +70,7 @@
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = global::EmmaWatsonGallery.Properties.Resources.settings;
+            this.pictureBox5.Image = global::CoppermineGallery.Properties.Resources.settings;
             this.pictureBox5.Location = new System.Drawing.Point(462, 1);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(32, 32);
@@ -84,7 +84,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::EmmaWatsonGallery.Properties.Resources.close;
+            this.pictureBox1.Image = global::CoppermineGallery.Properties.Resources.close;
             this.pictureBox1.Location = new System.Drawing.Point(528, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
@@ -98,7 +98,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::EmmaWatsonGallery.Properties.Resources.minimize;
+            this.pictureBox2.Image = global::CoppermineGallery.Properties.Resources.minimize;
             this.pictureBox2.Location = new System.Drawing.Point(496, 1);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
@@ -198,7 +198,7 @@
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.pictureBox6.Image = global::EmmaWatsonGallery.Properties.Resources.loading_12;
+            this.pictureBox6.Image = global::CoppermineGallery.Properties.Resources.loading_12;
             this.pictureBox6.Location = new System.Drawing.Point(148, 4);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(246, 225);
@@ -209,7 +209,7 @@
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox4.Image = global::EmmaWatsonGallery.Properties.Resources.download;
+            this.pictureBox4.Image = global::CoppermineGallery.Properties.Resources.download;
             this.pictureBox4.Location = new System.Drawing.Point(35, 198);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(112, 103);
@@ -223,7 +223,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox3.Image = global::EmmaWatsonGallery.Properties.Resources.folder;
+            this.pictureBox3.Image = global::CoppermineGallery.Properties.Resources.folder;
             this.pictureBox3.Location = new System.Drawing.Point(35, 72);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(112, 103);
@@ -250,7 +250,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Emma Watson Gallery v1.0";
+            this.Text = "Coppermine Gallery v1.0";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

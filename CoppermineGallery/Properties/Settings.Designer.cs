@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EmmaWatsonGallery.Properties {
+namespace CoppermineGallery.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

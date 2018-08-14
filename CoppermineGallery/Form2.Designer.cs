@@ -1,4 +1,4 @@
-﻿namespace EmmaWatsonGallery
+﻿namespace CoppermineGallery
 {
     partial class Form2
     {

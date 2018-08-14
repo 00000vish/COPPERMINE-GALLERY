@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EmmaWatsonGallery
+namespace CoppermineGallery
 {
     public partial class Form2 : Form
     {
@@ -49,7 +49,7 @@ namespace EmmaWatsonGallery
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Currently there are 47276 pictures stored on http://iheartwatson.net, as it get updated this number goes up. You can check thier website and update the number to get the latest pictures.", "Emma Watson Gallery", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Currently there are 47276 pictures stored on http://iheartwatson.net, as it get updated this number goes up. You can check thier website and update the number to get the latest pictures.", "Coppermine Gallery", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -116,7 +116,7 @@ namespace EmmaWatsonGallery
 
         private void button6_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("If you want to download from 1000th picture change value to 1000 and start downloading.", "Emma Watson Gallery", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("If you want to download from 1000th picture change value to 1000 and start downloading.", "Coppermine Gallery", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button7_Click(object sender, EventArgs e)

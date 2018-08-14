@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace EmmaWatsonGallery
+namespace CoppermineGallery
 {
     public partial class Form1 : Form
     {
