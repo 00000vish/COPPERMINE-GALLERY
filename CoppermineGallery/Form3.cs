@@ -13,10 +13,17 @@ namespace CoppermineGallery
     public partial class Form3 : Form
     {
         private string url = "";
+        private Form2 settings = null;
 
         public Form3()
         {
             InitializeComponent();
+        }
+
+        public void Show(Form2 settings)
+        {
+            this.settings = settings;
+            Show();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -47,6 +54,7 @@ namespace CoppermineGallery
         {
             Properties.Settings.Default.dataBaseCollection = Properties.Settings.Default.dataBaseCollection + Environment.NewLine + textBox1.Text;
             Properties.Settings.Default.Save();
+            settings.updateDatabaseList();
             Close();
         }
     }

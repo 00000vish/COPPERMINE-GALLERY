@@ -85,14 +85,19 @@ namespace CoppermineGallery
         private void Form2_Load(object sender, EventArgs e)
         {
             textBox3.Text = Properties.Settings.Default.FolderSetting;
+            updateDatabaseList();
+            comboBox1.Text = Properties.Settings.Default.dataBase;
+            textBox1.Text = "" + Properties.Settings.Default.MaxPic;
+            textBox2.Text = "" + Properties.Settings.Default.IndexPic;
+        }
+
+        public void updateDatabaseList()
+        {
             comboBox1.Items.Clear();
             foreach (var item in Properties.Settings.Default.dataBaseCollection.Split(new String[] { Environment.NewLine }, StringSplitOptions.None))
             {
                 comboBox1.Items.Add(item);
             }
-            comboBox1.Text = Properties.Settings.Default.dataBase;
-            textBox1.Text = "" + Properties.Settings.Default.MaxPic;
-            textBox2.Text = "" + Properties.Settings.Default.IndexPic;
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -132,7 +137,7 @@ namespace CoppermineGallery
         private void button8_Click(object sender, EventArgs e)
         {
             Form3 ADC = new Form3();
-            ADC.Show();
+            ADC.Show(this);
         }
     }
 }
