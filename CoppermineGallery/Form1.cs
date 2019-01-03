@@ -14,12 +14,13 @@ namespace CoppermineGallery
 {
     public partial class Form1 : Form
     {
-        private bool stopDownload = false;
-        private bool browserNavigated = false;
-        private bool downloadComplete = false;
-        private int x, y;
-        private Point newpoint = new Point();
-        private String selectedFolder = Properties.Settings.Default.FolderSetting;
+        //control switches
+        private bool stopDownload = false; //stops downloading if it true 
+        private bool browserNavigated = false; //navigated to image
+        private bool downloadComplete = false; //image save finish
+        private int x, y; //for gui mouse tracking
+        private Point newpoint = new Point(); //gui
+        private string selectedFolder = Properties.Settings.Default.FolderSetting; //save folder
 
         public Form1()
         {
@@ -27,10 +28,95 @@ namespace CoppermineGallery
             setupSettings();
         }
 
+        //download button click
+        private void beginDownload(object sender, EventArgs e)
+        {
+            stopDownload = false;
+            panel2.Visible = true;
+            navigateBrowser();
+        }
+
+        //navigate browser to image locations
+        private void navigateBrowser()
+        {
+            for (int index = Properties.Settings.Default.IndexPic; index <= Properties.Settings.Default.MaxPic; index++)
+            {
+                label5.Text = index + "/" + Properties.Settings.Default.MaxPic;
+                if (stopDownload)
+                {
+                    panel2.Visible = false;
+                    break;
+                }
+                if (!System.IO.File.Exists(selectedFolder + "\\" + index + ".png"))
+                    if (!System.IO.File.Exists(selectedFolder + "\\" + index + ".jpeg"))
+                        if (!System.IO.File.Exists(selectedFolder + "\\" + index + ".jpg"))
+                        {
+                            downloadComplete = false;
+                            browserNavigated = false;
+
+                            webBrowser1.Navigate(Properties.Settings.Default.dataBase + "/displayimage.php?pid=" + index + "&fullsize=1");
+
+                            Update();
+                            do
+                            {
+                                Application.DoEvents();
+                            } while (!browserNavigated);
+                            saveImage(index);
+                            do
+                            {
+                                Application.DoEvents();
+                            } while (!downloadComplete);
+                        }
+            }
+            MessageBox.Show("Download Complete!", "COPPERMINE GALLERY DOWNLOADER", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            stopDownload = false;
+            panel2.Visible = false;
+            Update();
+            Refresh();
+        }
+
+        //save image
+        private int saveImage(int index)
+        {
+            try
+            {
+                foreach (HtmlElement img in webBrowser1.Document.Images)
+                {
+                    try
+                    {
+                        String extention = img.GetAttribute("src").ToLower().Split('.')[img.GetAttribute("src").ToLower().Split('.').Length - 1];
+                        WebClient webClient = new WebClient();
+                        webClient.DownloadFile(img.GetAttribute("src"), selectedFolder + "\\" + index + "." + extention.ToLower());
+                    }
+                    catch (Exception)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(selectedFolder + "\\failedLinks.txt", true))
+                        {
+                            file.WriteLine(Properties.Settings.Default.dataBase + "/displayimage.php?pid=" + index + "&fullsize=1");
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+            downloadComplete = true;
+            return 1;
+        }
+
+        //update GUI if folder already selected on start up
+        private void setupSettings()
+        {
+            if (selectedFolder != "")
+            {
+                pictureBox3.Image = Properties.Resources.check;
+            }
+        }
+
+        #region GUI_RELATED_CALLS
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Close();
-        }
+        }      
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -107,93 +193,14 @@ namespace CoppermineGallery
                 Location = newpoint;
                 Application.DoEvents();
             }
-        }
-
-        private void setupSettings()
-        {
-            if (selectedFolder != "")
-            {
-                pictureBox3.Image = Properties.Resources.check;
-            }
-        }
+        }      
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             Form2 form = new Form2();
             form.Show();
         }
-
-        private void beginDownload(object sender, EventArgs e)
-        {
-            stopDownload = false;
-            panel2.Visible = true;
-            navigateBrowser();
-        }
-
-        private void navigateBrowser()
-        {
-            for (int index = Properties.Settings.Default.IndexPic; index <= Properties.Settings.Default.MaxPic; index++)
-            {
-                label5.Text = index + "/" + Properties.Settings.Default.MaxPic;
-                if (stopDownload)
-                {
-                    panel2.Visible = false;
-                    break;
-                }
-                if (!System.IO.File.Exists(selectedFolder + "\\" + index + ".png"))
-                    if (!System.IO.File.Exists(selectedFolder + "\\" + index + ".jpeg"))
-                        if (!System.IO.File.Exists(selectedFolder + "\\" + index + ".jpg"))
-                        {
-                            downloadComplete = false;
-                            browserNavigated = false;
-
-                            webBrowser1.Navigate(Properties.Settings.Default.dataBase + "/displayimage.php?pid=" + index + "&fullsize=1");
-
-                            Update();
-                            do
-                            {
-                                Application.DoEvents();
-                            } while (!browserNavigated);
-                            saveImage(index);
-                            do
-                            {
-                                Application.DoEvents();
-                            } while (!downloadComplete);
-                        }
-            }
-            Update();
-            Refresh();
-            MessageBox.Show("Download Complete!", "COPPERMINE GALLERY DOWNLOADER", MessageBoxButtons.OK,MessageBoxIcon.Information);
-            stopDownload = false;
-            panel2.Visible = false;            
-        }
-
-        private int saveImage(int index)
-        {
-            try
-            {
-                foreach (HtmlElement img in webBrowser1.Document.Images)
-                {
-                    try
-                    {
-                        String extention = img.GetAttribute("src").ToLower().Split('.')[img.GetAttribute("src").ToLower().Split('.').Length - 1];
-                        WebClient webClient = new WebClient();
-                        webClient.DownloadFile(img.GetAttribute("src"), selectedFolder + "\\" + index + "." + extention.ToLower());
-                    }
-                    catch (Exception)
-                    {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(selectedFolder + "\\failedLinks.txt", true))
-                        {
-                            file.WriteLine(Properties.Settings.Default.dataBase + "/displayimage.php?pid=" + index + "&fullsize=1");
-                        }
-                    }
-                }
-            }
-            catch (Exception e) { }
-            downloadComplete = true;
-            return 1;
-        }
-
+         
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             browserNavigated = true;
@@ -222,5 +229,7 @@ namespace CoppermineGallery
                 pictureBox3.Image = Properties.Resources.folder;
             }
         }
+
+        #endregion
     }
 }
