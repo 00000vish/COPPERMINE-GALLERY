@@ -132,7 +132,7 @@ namespace CoppermineGallery
 
         private void navigateBrowser()
         {
-            for (int index = Properties.Settings.Default.IndexPic; index < Properties.Settings.Default.MaxPic; index++)
+            for (int index = Properties.Settings.Default.IndexPic; index <= Properties.Settings.Default.MaxPic; index++)
             {
                 label5.Text = index + "/" + Properties.Settings.Default.MaxPic;
                 if (stopDownload)
@@ -161,6 +161,11 @@ namespace CoppermineGallery
                             } while (!downloadComplete);
                         }
             }
+            Update();
+            Refresh();
+            MessageBox.Show("Download Complete!", "COPPERMINE GALLERY DOWNLOADER", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            stopDownload = false;
+            panel2.Visible = false;            
         }
 
         private int saveImage(int index)
@@ -184,7 +189,7 @@ namespace CoppermineGallery
                     }
                 }
             }
-            catch (Exception e) { MessageBox.Show("Test" + e.ToString()); }
+            catch (Exception e) { }
             downloadComplete = true;
             return 1;
         }
