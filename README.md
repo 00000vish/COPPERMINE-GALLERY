@@ -1,5 +1,6 @@
-# coppermine-gallery-downloader
-Downloads full database of pictures from website that use Coppermine Gallery.
+# Coppermine Photo Gallery Downloader
+
+Downloads full database of pictures from website that use Coppermine Photo Gallery.
 
 
 ![App](https://imgur.com/AETvQRI.png)
